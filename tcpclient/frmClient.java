@@ -24,7 +24,7 @@ public class frmClient extends javax.swing.JFrame {
 
     public frmClient() {
         initComponents();
-        txtchuoi.requestFocus();
+        txtso1.requestFocus();
     }
 
     /**
@@ -38,10 +38,12 @@ public class frmClient extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtchuoi = new javax.swing.JTextField();
+        txtso1 = new javax.swing.JTextField();
+        txtso2 = new javax.swing.JTextField();
+        cbopheptoan = new javax.swing.JComboBox();
         txtketqua = new javax.swing.JTextField();
-        btntruyenchuoi = new javax.swing.JButton();
-        btnthoat = new javax.swing.JButton();
+        btntinh = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,23 +51,42 @@ public class frmClient extends javax.swing.JFrame {
 
         jLabel2.setText("Kết quả");
 
+        txtso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtso1ActionPerformed(evt);
+            }
+        });
+
+        txtso2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtso2ActionPerformed(evt);
+            }
+        });
+
+        cbopheptoan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+", "-", "*", "/" }));
+        cbopheptoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbopheptoanActionPerformed(evt);
+            }
+        });
+
         txtketqua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtketquaActionPerformed(evt);
             }
         });
 
-        btntruyenchuoi.setText("Truyền chuỗi");
-        btntruyenchuoi.addActionListener(new java.awt.event.ActionListener() {
+        btntinh.setText("Tính");
+        btntinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btntruyenchuoiActionPerformed(evt);
+                btntinhActionPerformed(evt);
             }
         });
 
-        btnthoat.setText("Thoát");
-        btnthoat.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Thoát");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnthoatActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -74,53 +95,72 @@ public class frmClient extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtchuoi, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                    .addComponent(txtketqua))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(btntruyenchuoi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addComponent(btnthoat)
-                .addGap(69, 69, 69))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btntinh)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(80, 80, 80))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtso1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbopheptoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtso2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtketqua, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 63, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtchuoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                    .addComponent(jLabel1)
+                    .addComponent(txtso1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtso2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbopheptoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtketqua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btntruyenchuoi)
-                    .addComponent(btnthoat))
-                .addContainerGap(97, Short.MAX_VALUE))
+                    .addComponent(btntinh)
+                    .addComponent(jButton2))
+                .addGap(68, 68, 68))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btntruyenchuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntruyenchuoiActionPerformed
+    private void txtso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtso2ActionPerformed
         // TODO add your handling code here:
-        String chuoi = txtchuoi.getText();
+    }//GEN-LAST:event_txtso2ActionPerformed
+
+    private void txtketquaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtketquaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtketquaActionPerformed
+
+    private void btntinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntinhActionPerformed
+        // TODO add your handling code here:
+        int so1 = Integer.parseInt(txtso1.getText());
+        int so2 = Integer.parseInt(txtso2.getText());
+        String pheptoan = cbopheptoan.getSelectedItem().toString();
+        String chuoi = so1 + "@" + pheptoan + "@" + so2;
         String ketqua = "";
         try {
             socket = new Socket("127.0.0.1", 1234);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new Scanner(socket.getInputStream());
             out.println(chuoi);
-            ketqua = in.nextLine().trim();
+            ketqua = in.nextLine();
             txtketqua.setText(ketqua);
             socket.close();
         } catch (Exception e) {
@@ -131,18 +171,21 @@ public class frmClient extends javax.swing.JFrame {
             } catch (Exception ex) {
                 e.printStackTrace();
             }
-            e.printStackTrace();
         }
-    }//GEN-LAST:event_btntruyenchuoiActionPerformed
+    }//GEN-LAST:event_btntinhActionPerformed
 
-    private void btnthoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthoatActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_btnthoatActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txtketquaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtketquaActionPerformed
+    private void txtso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtso1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtketquaActionPerformed
+    }//GEN-LAST:event_txtso1ActionPerformed
+
+    private void cbopheptoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbopheptoanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbopheptoanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,11 +223,13 @@ public class frmClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnthoat;
-    private javax.swing.JButton btntruyenchuoi;
+    private javax.swing.JButton btntinh;
+    private javax.swing.JComboBox cbopheptoan;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtchuoi;
     private javax.swing.JTextField txtketqua;
+    private javax.swing.JTextField txtso1;
+    private javax.swing.JTextField txtso2;
     // End of variables declaration//GEN-END:variables
 }

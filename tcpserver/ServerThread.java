@@ -14,36 +14,46 @@ import java.util.Scanner;
  *
  * @author Administrator
  */
-public class ServerThread implements Runnable {
+public class ServerThread implements Runnable{
 
     private Scanner in = null;
     private PrintWriter out = null;
     private Socket socket;
-    private String name;
-
-    public ServerThread(Socket socket, String name) throws IOException {
+    private String name ;
+            
+    public ServerThread(Socket socket, String name) throws IOException{
         this.socket = socket;
         this.name = name;
         this.in = new Scanner(this.socket.getInputStream());
-        this.out = new PrintWriter(this.socket.getOutputStream(), true);
+        this.out = new PrintWriter(this.socket.getOutputStream(),true);
         new Thread(this).start();
+    
     }
-
-    public void run() {
+    public void run(){
         try {
-            while (true) {
+            while(true){
                 String chuoi = in.nextLine().trim();
-                chuoi = chuoi.toUpperCase();
-                out.println(chuoi);
+                Scanner sc = new Scanner(chuoi);
+                sc.useDelimiter("@");
+                int so1 = sc.nextInt();
+                String pheptoan = sc.next();
+                int so2 = sc.nextInt();
+                if(pheptoan.equals("+"))
+                    out.println(so1+so2);
+                else if(pheptoan.equals("-"))
+                    out.println(so1-so2);
+                else if(pheptoan.equals("*"))
+                    out.println(so1*so2);
+                else if(pheptoan.equals("/"))
+                    out.println((float)so1/so2);
             }
         } catch (Exception e) {
-            System.out.println(name + "has departed");
-        } finally {
+            System.out.println(name  +"has departed");
+        }finally{
             try {
                 socket.close();
-            } catch (IOException e) {
+            } catch (Exception e) {
             }
         }
     }
-
 }

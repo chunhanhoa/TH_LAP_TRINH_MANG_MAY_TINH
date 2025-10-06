@@ -14,12 +14,16 @@ import java.net.Socket;
  */
 public class TCPServer {
 
+    /**
+     * @param args the command line arguments
+     */
     static final int PORT = 1234;
     private ServerSocket server = null;
 
     public TCPServer() {
         try {
             server = new ServerSocket(PORT);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -28,19 +32,20 @@ public class TCPServer {
     public void action() {
         Socket socket = null;
         int i = 0;
-        System.out.println("Server is listening...");
+        System.out.println("Server listening...");
         try {
             while ((socket = server.accept()) != null) {
-                new ServerThread(socket, "Client#" + i);
-                System.out.printf("Thread for client #%d generating ... %n", i++);
-
+                new ServerThread(socket, "Client #" + i);
+                System.out.printf("Thread for client %d generating...%n", i++);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public static void main(String[] args) {
+        // TODO code application logic 
         new TCPServer().action();
     }
 
